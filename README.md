@@ -58,8 +58,15 @@ fn alloc_some(){
         }
 }
 ```
+Outputs:
+```
+sleep short: IPS mean:86.64 (0.011542) (11.54ms) variance:0.00 stddev:0.00 relative_stddev:4.37 [cycles:55|# per cycle:8]
+sleep shorter: IPS mean:770.67 (0.001298) (1.30ms) variance:0.00 stddev:0.01 relative_stddev:0.95 [cycles:51|# per cycle:77]
+alloc_some: IPS mean:138.69 (0.007210) (7.21ms) variance:0.00 stddev:0.00 relative_stddev:1.65 [cycles:54|# per cycle:13]
+```
 
-# Things to improve:#
+# Things to improve:
+ - formatting of output
  - comparing runs +5%/-5% relative to previous runs
  - use monotonic time instead of tick count (monotonic time is not yet available in V)
  - compare performance of functions to each other
