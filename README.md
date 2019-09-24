@@ -1,7 +1,7 @@
 # vbench
-Benchmark code written in V
+Benchmark code written in V.
 
-Measuring the number of iterations per second (ips) of each function
+Measuring the number of iterations per second (ips) of each function.
 
 
 First runs warmup (pass 1), the code to benchmark is run for N seconds and calculates how many 100ms cycles it can execute.
@@ -24,7 +24,7 @@ alloc_some: IPS mean:86.09 (0.011616) (11.62ms) variance:0.00 stddev:0.01 relati
 9: number of operations per cycle
 ```
 
-Inspired on Crystal's Benchmark module.
+Based on Crystal's Benchmark module.
 
 # usage
 ```
@@ -72,3 +72,4 @@ alloc_some: IPS mean:138.69 (0.007210) (7.21ms) variance:0.00 stddev:0.00 relati
  - compare performance of functions to each other
  - use channels to signal completion of benchmark duration (instead of checking tickcount in benchmark loop)
  - use struct defaults (N 2 / 5) when it comes available
+ - return stats as struct
