@@ -10,18 +10,17 @@ Then the code is run for N seconds (pass 2), where the code is executed in block
 outputs:
 
 ```
-     1            2             3         4          5             6                7                 8            9
-alloc_some: IPS mean:86.09 (0.011616) (11.62ms) variance:0.00 stddev:0.01 relative_stddev:10.00 [cycles:53|# per cycle:8]
+     1            2            3          4             5                6                 7            8
+alloc_some: IPS mean:86.09 (11.62ms) variance:0.00 stddev:0.01 relative_stddev:10.00 [cycles:53|# per cycle:8]
 
 1: label of benchmark
 2: mean of ips
-3: duration per iteration
-4: duration per iteration in milliseconds
-5: sample variance of ips
-6: sample standard deviation of ips
-7: relative standard deviation of ips
-8: number of cycles executed
-9: number of operations per cycle
+3: duration per iteration (in milliseconds)
+4: sample variance of ips
+5: sample standard deviation of ips
+6: relative standard deviation of ips
+7: number of cycles executed
+8: number of operations per cycle
 ```
 
 Based on Crystal's Benchmark module.
@@ -60,9 +59,9 @@ fn alloc_some(){
 ```
 Outputs:
 ```
-sleep short: IPS mean:86.64 (0.011542) (11.54ms) variance:0.00 stddev:0.00 relative_stddev:4.37 [cycles:55|# per cycle:8]
-sleep shorter: IPS mean:770.67 (0.001298) (1.30ms) variance:0.00 stddev:0.01 relative_stddev:0.95 [cycles:51|# per cycle:77]
-alloc_some: IPS mean:138.69 (0.007210) (7.21ms) variance:0.00 stddev:0.00 relative_stddev:1.65 [cycles:54|# per cycle:13]
+sleep short        IPS mean:86.65(11.54ms) variance:0.00 stddev:0.00 relative_stddev:4.87 [cycles:55|# per cycle:8]
+sleep shorter      IPS mean:771.86(1.30ms) variance:0.00 stddev:0.01 relative_stddev:1.64 [cycles:51|# per cycle:77]
+alloc_some         IPS mean:138.46(7.22ms) variance:0.00 stddev:0.00 relative_stddev:1.86 [cycles:54|# per cycle:13]
 ```
 
 # Things to improve:
