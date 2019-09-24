@@ -54,7 +54,7 @@ fn (b mut Benchmark) run_warmup(fp fn()) {
         for {
                 fp()
                 count++
-                if time.ticks() > end_tick {   // overhead? idea:use channel approach to stop after timeout
+                if time.ticks() > end_tick {   // overhead?
                         break 
                 }
         }
