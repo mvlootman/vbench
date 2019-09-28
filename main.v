@@ -2,10 +2,10 @@ import bench
 import time
 
 fn main(){
-        mut b := bench.Benchmark{
+        mut b := bench.new(bench.Benchmark{
                 warmup_secs: 2,
                 bench_secs: 5
-        }
+        })
         
         b.bench('sleep short', sleep_short)    
         b.bench('sleep shorter', sleep_shorter)   

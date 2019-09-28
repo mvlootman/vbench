@@ -1,8 +1,8 @@
 # vbench
+
 Benchmark code written in V.
 
 Measuring the number of iterations per second (ips) of each function.
-
 
 First runs warmup (pass 1), the code to benchmark is run for N seconds and calculates how many 100ms cycles it can execute.
 Then the code is run for N seconds (pass 2), where the code is executed in blocks of the cycle size determined in pass 1. 
@@ -26,7 +26,8 @@ alloc_some: IPS mean:86.09 (0.011616) (11.62ms) variance:0.00 stddev:0.01 relati
 
 Based on Crystal's Benchmark module.
 
-# usage
+## usage
+
 ```
 import bench
 import time
@@ -36,10 +37,10 @@ fn main(){
                 warmup_secs: 2,
                 bench_secs: 5
         }
-        
-        b.bench('sleep short', sleep_short)    
-        b.bench('sleep shorter', sleep_shorter)   
-        b.bench('alloc_some', alloc_some)   
+
+        b.bench('sleep short', sleep_short)
+        b.bench('sleep shorter', sleep_shorter)
+        b.bench('alloc_some', alloc_some)
 }
 
 fn sleep_short(){
@@ -58,18 +59,20 @@ fn alloc_some(){
         }
 }
 ```
+
 Outputs:
+
 ```
-sleep short: IPS mean:86.64 (0.011542) (11.54ms) variance:0.00 stddev:0.00 relative_stddev:4.37 [cycles:55|# per cycle:8]
-sleep shorter: IPS mean:770.67 (0.001298) (1.30ms) variance:0.00 stddev:0.01 relative_stddev:0.95 [cycles:51|# per cycle:77]
-alloc_some: IPS mean:138.69 (0.007210) (7.21ms) variance:0.00 stddev:0.00 relative_stddev:1.65 [cycles:54|# per cycle:13]
+sleep short        mean:84.72ips (11.80ms) variance:0.00001 relative_stddev:3.541 [53 cycles|8 ops]
+sleep shorter      mean:789.24ips (1.27ms) variance:0.00022 relative_stddev:1.872 [51 cycles|78 ops]
+alloc_some         mean:84.98ips (11.77ms) variance:0.00002 relative_stddev:5.824 [61 cycles|7 ops]
 ```
 
-# Things to improve:
- - formatting of output
- - comparing runs +5%/-5% relative to previous runs
- - use monotonic time instead of tick count (monotonic time is not yet available in V)
- - compare performance of functions to each other
- - use channels to signal completion of benchmark duration (instead of checking tickcount in benchmark loop)
- - use struct defaults (N 2 / 5) when it comes available
- - return stats as struct
+## Things to improve
+
+- comparing runs +5%/-5% relative to previous runs
+- use monotonic time instead of tick count (monotonic time is not yet available in V)
+- compare performance of functions to each other
+- use channels to signal completion of benchmark duration (instead of checking tickcount in benchmark loop)
+- use struct defaults (N 2 / 5) when it comes available
+- return stats in struct
