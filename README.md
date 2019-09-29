@@ -4,8 +4,8 @@ Benchmark code written in V.
 
 Measuring the number of iterations per second (ips) of each function.
 
-First runs warmup (pass 1), the code to benchmark is run for N seconds and calculates how many 100ms cycles it can execute.
-Then the code is run for N seconds (pass 2), where the code is executed in blocks of the cycle size determined in pass 1. 
+First runs warmup (pass 1), the code to benchmark is run for N seconds (defaults to 2 seconds) and calculates how many 100ms cycles it can execute.
+Then the code is run (pass 2) for N seconds (defaults to 5 seconds), where the code is executed in blocks of the cycle size determined in pass 1.
 
 outputs:
 
@@ -33,10 +33,9 @@ import bench
 import time
 
 fn main(){
-        mut b := bench.Benchmark{
-                warmup_secs: 2,
-                bench_secs: 5
-        }
+        mut b := bench.new(bench.Benchmark{
+                bench_secs: 4,
+        })
 
         b.bench('sleep short', sleep_short)
         b.bench('sleep shorter', sleep_shorter)
@@ -74,5 +73,4 @@ alloc_some         mean:84.98ips (11.77ms) variance:0.00002 relative_stddev:5.82
 - use monotonic time instead of tick count (monotonic time is not yet available in V)
 - compare performance of functions to each other
 - use channels to signal completion of benchmark duration (instead of checking tickcount in benchmark loop)
-- use struct defaults (N 2 / 5) when it comes available
 - return stats in struct

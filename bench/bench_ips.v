@@ -33,8 +33,13 @@ pub:
         verbose         bool    // show verbose output
 }
 
-pub fn new(b Benchmark) Benchmark{        
-        return b
+pub fn new(b Benchmark) Benchmark{
+        bencher := Benchmark{
+                warmup_secs: if b.warmup_secs == 0 { 2 } else { b.warmup_secs }
+                bench_secs: if b.bench_secs == 0 { 5 } else { b.bench_secs }
+                verbose: b.verbose
+        }   
+        return bencher
 }
 
 pub fn (b mut Benchmark) bench(name string, fp fn()) {
