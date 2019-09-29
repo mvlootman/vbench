@@ -61,7 +61,6 @@ fn alloc_some(){
 Outputs:
 
 ```
-<<<<<<< HEAD
 sleep short        mean:84.72ips (11.80ms) variance:0.00001 relative_stddev:3.541 [53 cycles|8 ops]
 sleep shorter      mean:789.24ips (1.27ms) variance:0.00022 relative_stddev:1.872 [51 cycles|78 ops]
 alloc_some         mean:84.98ips (11.77ms) variance:0.00002 relative_stddev:5.824 [61 cycles|7 ops]
