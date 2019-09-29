@@ -2,5 +2,4 @@ main.dSYM
 main
 tempCodeRunnerFile
 bench/bench_ips
-bench/bench_ips.dSYM/Contents/Info.plist
-bench/bench_ips.dSYM/Contents/Resources/DWARF/bench_ips
+bench/bench_ips.dSYM/
