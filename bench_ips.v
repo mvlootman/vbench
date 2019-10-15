@@ -3,7 +3,7 @@ module bench
 import time
 import math.stats
 
-// Benchmark: instructions per second (ips)
+// Benchmark: iterations per second (ips)
 // 
 // pass 1, the code to benchmark is run for N (default 2) seconds
 //      and calculates how many 100ms cycles it can execute
