@@ -22,7 +22,7 @@ import math.stats
 // 6: number of cycles executed
 // 7: number of operations (run code to benchmark) per cycle
 
-struct Benchmark {
+pub struct Benchmark {
 mut:
         cycles          int     // number of iterations per cycles
         name            string  // name of benchmark
@@ -30,7 +30,7 @@ mut:
 pub:
         warmup_secs     int
         bench_secs      int
-        verbose         bool    // show verbose output
+        verbose         bool   // show verbose output
 }
 
 pub fn new(b Benchmark) Benchmark{
@@ -42,14 +42,14 @@ pub fn new(b Benchmark) Benchmark{
         return bencher
 }
 
-pub fn (b mut Benchmark) bench(name string, fp fn()) {
+pub fn (mut b Benchmark) bench(name string, fp fn()) {
         b.log_debug('benching: $name')
         b.name = name
         b.run_warmup(fp) 
         b.run_bench(fp)
 }
 
-fn (b mut Benchmark) run_warmup(fp fn()) {
+fn (mut b Benchmark) run_warmup(fp fn()) {
         b.log_debug('\trunning warmup for $b.warmup_secs seconds')
         start_tick := time.ticks()
         end_tick := start_tick + (b.warmup_secs * 1000)
@@ -69,25 +69,25 @@ fn (b mut Benchmark) run_warmup(fp fn()) {
 
 fn (b Benchmark) run_bench(fp fn()) {
         b.log_debug('\trun bench N=$b.bench_secs secs')
-        mut durations := []i64
+        mut durations := []i64{}
         start_tick := time.ticks()
         end_tick := start_tick + (b.bench_secs * 1000)
         
-        mut cycle_start_tick := i64(0)
-        mut cycle_end_tick := i64(0)
+        sw := time.StopWatch{}
         mut iter := i64(0)
         for {
-                cycle_start_tick = time.ticks()
+                sw.start()
                 for iter = 0 ; iter < b.cycles; iter++{
                         fp()
                 }
-                cycle_end_tick = time.ticks()
-                durations << cycle_end_tick - cycle_start_tick
+                sw.stop()
+                durations << sw.elapsed().milliseconds()
+
                 if time.ticks() > end_tick {
                         break 
                 }
         }
-        duration_ms  := (end_tick - start_tick)
+        duration_ms  := (end_tick - start_tick) // duration of whole cycle
         ips := to_ips(durations, b.cycles)
         b.calc_stats(ips, duration_ms)
 }

@@ -69,7 +69,6 @@ alloc_some         mean:84.98ips (11.77ms) variance:0.00002 relative_stddev:5.82
 ## Things to improve
 
 - comparing runs +5%/-5% relative to previous runs
-- use monotonic time instead of tick count (monotonic time is not yet available in V)
 - compare performance of functions to each other
 - use channels to signal completion of benchmark duration (instead of checking tickcount in benchmark loop)
 - return stats in struct
