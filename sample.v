@@ -28,14 +28,13 @@ fn alloc_some(){
         }
 }
 
-// ticks impl (non -prod)
+// Output:
 // starting test
-// sleep short        mean:87.14ips (11.48ms) variance:0.00001 relative_stddev:2.937 [44 cycles|8 ops]
-// sleep shorter      mean:791.07ips (1.26ms) variance:0.00022 relative_stddev:1.880 [41 cycles|78 ops]
-// alloc_some         mean:82.72ips (12.09ms) variance:0.00001 relative_stddev:3.114 [42 cycles|8 ops]
+// sleep short        mean:87.04ips (11.49ms) variance:0.00000 relative_stddev:2.066 [44 cycles|8 ops]
+// sleep shorter      mean:777.63ips (1.29ms) variance:0.00003 relative_stddev:0.732 [41 cycles|77 ops]
+// alloc_some         mean:134.87ips (7.41ms) variance:0.00001 relative_stddev:2.040 [42 cycles|13 ops]
 
-// ticks impl (-prod)
 // starting test
-// sleep short        mean:87.45ips (11.43ms) variance:0.00001 relative_stddev:2.737 [44 cycles|8 ops]
-// sleep shorter      mean:785.48ips (1.27ms) variance:0.00013 relative_stddev:1.460 [41 cycles|77 ops]
-// alloc_some         mean:122.89ips (8.14ms) variance:0.00006 relative_stddev:6.125 [41 cycles|12 ops]
+// sleep short        mean:86.43ips (11.57ms) variance:0.00000 relative_stddev:2.085 [43 cycles|8 ops]
+// sleep shorter      mean:780.53ips (1.28ms) variance:0.00005 relative_stddev:0.926 [41 cycles|77 ops]
+// alloc_some         mean:135.85ips (7.36ms) variance:0.00001 relative_stddev:2.558 [42 cycles|13 ops]
